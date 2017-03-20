@@ -1,10 +1,10 @@
 /***************************************
 *  To change the scoreboard picture:
 *  replace the scoreboard.bmp file
-*  then adjust the following scoreboard 
+*  then adjust the following scoreboard
 *  configuration variables.
 *  All numeric values should be number
-*  of pixels.  Arrays should be 
+*  of pixels.  Arrays should be
 *  left, top, bottom, right coordinates
 *  of the specified area in the picture
 ***************************************/
@@ -185,7 +185,7 @@ function power(sw)
 {
  if (sw == 'off')
  {
-  document.getElementById('pwr').src = 'images/pwroff.bmp
+  document.getElementById('pwr').src = 'images/pwroff.bmp'
   poweroff = true
   setscreen("&nbsp;")
   if (maintimerid) stopclock()
@@ -196,7 +196,7 @@ function power(sw)
   }
   state = 'off'
  } else {
-  document.getElementById('pwr').src = 'images/pwron.bmp
+  document.getElementById('pwr').src = 'images/pwron.bmp'
   state = 'poweron'
   if (maintimerid) stopclock()
   clearboard()
@@ -225,7 +225,7 @@ function scoreadj(side, adjust)
 {
  sign=""
  if (adjust > 0) sign="+"
- if (side == 0) 
+ if (side == 0)
  {
   homescore = homescore + adjust
   if (homescore < 0) homescore = 0
@@ -259,7 +259,7 @@ function clocktick()
 		if (timeoutsec < 0) {
 			timeoutsec = 59;
 			timeoutmin = timeoutmin - 1;
-		} 
+		}
 		var sec = "" + timeoutsec;
 		if (sec.length < 2) sec = "0" + sec;
 		screentext = "Time Out<br>" + timeoutmin + ":" + sec;
@@ -288,7 +288,7 @@ function clocktick()
 					if (autohorn) document.getElementById("hornwav").play();
 					clearInterval(maintimerid);
 					maintimerid = 0;
-				}   
+				}
 			} else {
 				mainsec = mainsec + 1;
 				if (mainsec > 59)
@@ -317,7 +317,7 @@ function penaltytick()
 
 function tickpenalty(penalty)
 {
-   if (penalty[0]) 
+   if (penalty[0])
    {
     penalty[2] = penalty[2] - 1
     if (penalty[2] < 0)
@@ -331,10 +331,10 @@ function tickpenalty(penalty)
     }
    } else {
     penalty[1] = 0
-    penalty[2] = 0  
+    penalty[2] = 0
    }
 }
-    
+
 function promote(penarr)
 {
 	topsort(penarr);
@@ -361,7 +361,7 @@ function bottomsort(penarr)
 		var hold = penarr[2];
 		penarr[2] = penarr[3];
 		penarr[3] = hold;
-	} 
+	}
 }
 
 function comppenalty(a,b)
@@ -408,18 +408,18 @@ function setscreen(msg)
 function initialize()
 {
  if (initialized) { return }
- initialized = true 
+ initialized = true
  document.getElementById('sorry').innerHTML="<center>Loading ... Please Wait</center>"
  var boarddiv=makeelement("div", 'boarddiv', 0, 0, "auto", "auto", '')
- boarddiv.appendChild(makeelement("div", 'board', 0, 0, boardheight, boardwidth,"<img src='images/scoreboard.bmp>"))
+ boarddiv.appendChild(makeelement("div", 'board', 0, 0, boardheight, boardwidth,"<img src='images/scoreboard.bmp'>"))
  hmht = homescoreloc[3] - homescoreloc[1]
  hmwd = homescoreloc[2] - homescoreloc[0]
  hmchwd = parseInt(hmwd / 5,10)
- boarddiv.appendChild(makeelement("div", 'homescore', homescoreloc[0],homescoreloc[1],hmht,hmwd,"<img id='hmten' height=" + hmht + " width=" + (hmchwd * 2) + " src='images/blank.gif><img height=" + hmht + " width=" + hmchwd + " src='images/blank.gif><img id='hmone' height=" + hmht + " width=" + (hmchwd * 2) + " src='images/blank.gif>"))
+ boarddiv.appendChild(makeelement("div", 'homescore', homescoreloc[0],homescoreloc[1],hmht,hmwd,"<img id='hmten' height=" + hmht + " width=" + (hmchwd * 2) + " src='images/blank.gif'><img height=" + hmht + " width=" + hmchwd + " src='images/blank.gif'><img id='hmone' height=" + hmht + " width=" + (hmchwd * 2) + " src='images/blank.gif'>"))
  hmht = awayscoreloc[3] - awayscoreloc[1]
  hmwd = awayscoreloc[2] - awayscoreloc[0]
  hmchwd = parseInt(hmwd / 5,10)
- boarddiv.appendChild(makeelement("div", 'awayscore', awayscoreloc[0],awayscoreloc[1],hmht,hmwd,"<img id='awten' height=" + hmht + " width=" + (hmchwd * 2) +  " src='images/blank.gif><img height=" + hmht + " width=" + hmchwd + " src='images/blank.gif><img id='awone' height=" + hmht + " width=" + (hmchwd * 2) + " src='images/blank.gif>"))
+ boarddiv.appendChild(makeelement("div", 'awayscore', awayscoreloc[0],awayscoreloc[1],hmht,hmwd,"<img id='awten' height=" + hmht + " width=" + (hmchwd * 2) +  " src='images/blank.gif'><img height=" + hmht + " width=" + hmchwd + " src='images/blank.gif'><img id='awone' height=" + hmht + " width=" + (hmchwd * 2) + " src='images/blank.gif'>"))
  if (numpenalty > 4) numpenalty=4
  if (numpenalty < 1) numpenalty=0
  for(i=0;i<numpenalty;i++)
@@ -428,55 +428,55 @@ function initialize()
   pnht = homepenaltyloc[i][3] - homepenaltyloc[i][1]
   pnwd = homepenaltyloc[i][2] - homepenaltyloc[i][0]
   pnchwd = parseInt(pnwd / 11,10)
-  pnhtml = "<img id='h" + i + "mten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif>"
-  pnhtml = pnhtml + "<img id='h" + i + "mone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif>"
-  pnhtml = pnhtml + "<img height=" + pnht + " width=" + pnchwd + " src='images/colono.bmp>"
-  pnhtml = pnhtml + "<img id='h" + i + "sten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif>"
-  pnhtml = pnhtml + "<img id='h" + i + "sone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif>"
+  pnhtml = "<img id='h" + i + "mten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif'>"
+  pnhtml = pnhtml + "<img id='h" + i + "mone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'>"
+  pnhtml = pnhtml + "<img height=" + pnht + " width=" + pnchwd + " src='images/colono.bmp'>"
+  pnhtml = pnhtml + "<img id='h" + i + "sten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif'>"
+  pnhtml = pnhtml + "<img id='h" + i + "sone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'>"
   boarddiv.appendChild(makeelement("div", 'h' + i + 'pen', homepenaltyloc[i][0],homepenaltyloc[i][1],pnht,pnwd, pnhtml))
   //away penalty timer
   pnht = awaypenaltyloc[i][3] - awaypenaltyloc[i][1]
   pnwd = awaypenaltyloc[i][2] - awaypenaltyloc[i][0]
   pnchwd = parseInt(pnwd / 11,10)
-  pnhtml = "<img id='a" + i + "mten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif>"
-  pnhtml = pnhtml + "<img id='a" + i + "mone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif>"
-  pnhtml = pnhtml + "<img height=" + pnht + " width=" + pnchwd + " src='images/colono.bmp>"
-  pnhtml = pnhtml + "<img id='a" + i + "sten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif>"
-  pnhtml = pnhtml + "<img id='a" + i + "sone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif>"
+  pnhtml = "<img id='a" + i + "mten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif'>"
+  pnhtml = pnhtml + "<img id='a" + i + "mone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'>"
+  pnhtml = pnhtml + "<img height=" + pnht + " width=" + pnchwd + " src='images/colono.bmp'>"
+  pnhtml = pnhtml + "<img id='a" + i + "sten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif'>"
+  pnhtml = pnhtml + "<img id='a" + i + "sone' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'>"
   boarddiv.appendChild(makeelement("div", 'a' + i + 'pen', awaypenaltyloc[i][0],awaypenaltyloc[i][1],pnht,pnwd, pnhtml))
-  
-  if (penaltyplayer) 
-  { 
+
+  if (penaltyplayer)
+  {
    //home penalty player number
    pnht = homepenaltyplrloc[i][3] - homepenaltyplrloc[i][1]
    pnwd = homepenaltyplrloc[i][2] - homepenaltyplrloc[i][0]
    pnchwd = parseInt(pnwd / 5,10)
-   pnhtml = "<img id='hp" + i + "ten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif>"
-   pnhtml = pnhtml + "<img id='hp" + i + "one' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif>"
+   pnhtml = "<img id='hp" + i + "ten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif'>"
+   pnhtml = pnhtml + "<img id='hp" + i + "one' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'>"
    boarddiv.appendChild(makeelement("div", 'hp' + i + 'pen', homepenaltyplrloc[i][0],homepenaltyplrloc[i][1],pnht,pnwd, pnhtml))
    //away penalty player number
    pnht = awaypenaltyplrloc[i][3] - awaypenaltyplrloc[i][1]
    pnwd = awaypenaltyplrloc[i][2] - awaypenaltyplrloc[i][0]
    pnchwd = parseInt(pnwd / 5,10)
-   pnhtml = "<img id='ap" + i + "ten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif>"
-   pnhtml = pnhtml + "<img id='ap" + i + "one' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif>"
+   pnhtml = "<img id='ap" + i + "ten' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'><img height=" + pnht + " width=" + pnchwd + " src='images/blank.gif'>"
+   pnhtml = pnhtml + "<img id='ap" + i + "one' height=" + pnht + " width=" + (pnchwd * 2) + " src='images/blank.gif'>"
    boarddiv.appendChild(makeelement("div", 'hp' + i + 'pen', awaypenaltyplrloc[i][0],awaypenaltyplrloc[i][1],pnht,pnwd, pnhtml))
   }
  }
  ckht = mainclockloc[3] - mainclockloc[1]
  ckwd = mainclockloc[2] - mainclockloc[0]
  ckchwd = ckwd / 13
- clkhtml = "<img id='clkmten' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif>"
- clkhtml = clkhtml + "<img id='clkmone' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif>"
- clkhtml = clkhtml + "<img height=" + ckht + " width=" + ckchwd + " src='images/colong.gif><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif>"
- clkhtml = clkhtml + "<img id='clksten' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif>"
- clkhtml = clkhtml + "<img id='clksone' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif>"
+ clkhtml = "<img id='clkmten' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif'><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif'>"
+ clkhtml = clkhtml + "<img id='clkmone' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif'><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif'>"
+ clkhtml = clkhtml + "<img height=" + ckht + " width=" + ckchwd + " src='images/colong.gif'><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif'>"
+ clkhtml = clkhtml + "<img id='clksten' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif'><img height=" + ckht + " width=" + ckchwd + " src='images/blank.gif'>"
+ clkhtml = clkhtml + "<img id='clksone' height=" + ckht + " width=" + (ckchwd * 2) + " src='images/blank.gif'>"
  boarddiv.appendChild(makeelement("div", 'mainclk', mainclockloc[0], mainclockloc[1], ckht, ckwd, clkhtml))
  pht = periodloc[3] - periodloc[1]
  pwd = periodloc[2] - periodloc[0]
- boarddiv.appendChild(makeelement("div", "perioddiv", periodloc[0], periodloc[1], pht, pwd,"<img id='period' height=" + pht + " width=" + pwd + " src='images/blank.gif>"))
+ boarddiv.appendChild(makeelement("div", "perioddiv", periodloc[0], periodloc[1], pht, pwd,"<img id='period' height=" + pht + " width=" + pwd + " src='images/blank.gif'>"))
 
- var screendiv=makeelement("div", 'screendiv', 0, boardheight + 10, "auto", "auto", "<img id='pwr' src='images/pwroff.bmp height='" + screenht + "' width='" + screenht + "' onclick='javascript:pressbutton(" + '"Power Button"' + ");'>")
+ var screendiv=makeelement("div", 'screendiv', 0, boardheight + 10, "auto", "auto", "<img id='pwr' src='images/pwroff.bmp' height='" + screenht + "' width='" + screenht + "' onclick='javascript:pressbutton(" + '"Power Button"' + ");'>")
  scrn = makeelement("div", 'scrn', parseInt((boardwidth-screenwd)/2,10), 0, screenht, screenwd, "&nbsp;")
  scrn.style.background = '#707070'
  scrn.style.fontSize=parseInt((screenht-10)/2 * 10,10)/10
@@ -529,7 +529,7 @@ function initialize()
  keymap = keymap + "<area href='javascript:pressbutton(" + '"Clear/Alt"' + ");' shape=rect coords='750,305,815,380'>"
  keymap = keymap + "<area href='javascript:pressbutton(" + '"Enter/Edit"' + ");' shape=rect coords='917,305,982,380'>"
  keymap = keymap + "</map>"
- var keydiv=makeelement("div",'keydiv',0,boardheight + screenht + 20,"auto", "auto",keymap + "<img src='images/insert.bmp usemap='#hockey'>")
+ var keydiv=makeelement("div",'keydiv',0,boardheight + screenht + 20,"auto", "auto",keymap + "<img src='images/insert.bmp' usemap='#hockey'>")
  document.body.appendChild(boarddiv)
  document.body.appendChild(screendiv)
  document.body.appendChild(keydiv)
@@ -561,16 +561,16 @@ function selectpenalty(dirbtn)
  }
  if (dirbtn == 'Enter/Edit')
  {
-  if (prevstate == 'editpenalty') 
+  if (prevstate == 'editpenalty')
   {
    min = penset[penaltynum][1]
    sec = penset[penaltynum][2]
    if (min.length < 2) min = "0" + min
-   if (sec.length < 2) sec = "0" + sec  
+   if (sec.length < 2) sec = "0" + sec
    screentext = penaltyside + " plyr/pen<br>" + (penaltynum + 1) + " p#1#2* pn " + min + ":" + sec
    inbuffer = penset[penaltynum][3]
    if (inbuffer.length < 2) inbuffer = "0" + inbuffer
-   setscreen(screentext.replace("#1#2",inbuffer))   
+   setscreen(screentext.replace("#1#2",inbuffer))
    state = 'editpenalty'
   } else if (prevstate == 'deletepenalty')
   {
@@ -638,7 +638,7 @@ function processpenalty()
          sec = minorpensec
          if (min < 10) min = "0" + min
          if (sec < 10) sec = "0" + sec
-        }  
+        }
         inbuffer = (" " + min + sec).substr(1)
         setscreen(screentext.replace("#1#2",inbuffer.substr(0,2) + ":" + inbuffer.substr(2,2)))
   } else if (state == 'editpenaltytime') {
@@ -650,14 +650,14 @@ function processpenalty()
         pen[3] = penaltyplr
         state = 'main'
         setscreen("&nbsp;")
-        display()        
+        display()
   }
 
 }
 
 function pressbutton(btn)
 {
- if (poweroff) 
+ if (poweroff)
  {
   if (btn == 'Power Button') power('on')
  } else {
@@ -668,7 +668,7 @@ function pressbutton(btn)
    setscreen("&nbsp;")
    return
   }
-  if (state == 'lamptest') 
+  if (state == 'lamptest')
   {
    display()
    state = 'main'
@@ -691,7 +691,7 @@ function pressbutton(btn)
     case '6/1/10 Sec':
        break
     case '5/Lamp Test':
-       if (!maintimerid) 
+       if (!maintimerid)
        {
         state = 'lamptestprompt'
         setscreen("Lamp test mode<br>Enter to accept")
@@ -706,7 +706,7 @@ function pressbutton(btn)
    switch(btn)
    {
     case 'Home Score +1':
-    case 'Home Score -1':    
+    case 'Home Score -1':
        scoreedit("HOME")
        break
     case 'Away Score +1':
@@ -799,22 +799,22 @@ function pressbutton(btn)
        alert("I'm not really sure what that button is supposed to do, so I didn't implement it.")
        break
     case 'Minor Penalty':
-       if (state == 'editpenaltytime') 
+       if (state == 'editpenaltytime')
        {
          if (minorpenmin < 10) min = "0"; else min="";
          if (minorpensec < 10) sec = "0"; else sec="";
          buffer = (" " + min + minorpenmin + sec + minorpensec).substr(1)
          for(i=0;i<4;i++) numberpress(buffer[i])
-       } 
+       }
        break
     case 'Major Penalty':
-       if (state == 'editpenaltytime') 
+       if (state == 'editpenaltytime')
        {
          if (majorpenmin < 10) min = "0"; else min="";
          if (majorpensec < 10) sec = "0"; else sec="";
          buffer = (" " + min + majorpenmin + sec + majorpensec).substr(1)
          for(i=0;i<4;i++) numberpress(buffer[i])
-       } 
+       }
        break
     case 'Time Out On/Off':
        switch (state) {
@@ -825,7 +825,7 @@ function pressbutton(btn)
 			  var sec = "" + timeoutsec;
 			  if (sec.length < 2) sec = "0" + sec;
 			  screentext = "TO Length full or part<br>Full  " + timeoutmin + ":" + sec;
-			  setscreen(screentext); 
+			  setscreen(screentext);
 			  break;
 		  case 'timeoutfull':
 			  state = 'timeoutpart';
@@ -834,7 +834,7 @@ function pressbutton(btn)
 			  var sec = "" + timeoutsec;
 			  if (sec.length < 2) sec = "0" + sec;
 			  screentext = "TO Length full or part<br>Part  " + timeoutmin + ":" + sec;
-			  setscreen(screentext); 
+			  setscreen(screentext);
      		  break;
 		  case 'timeoutpart':
 			  state = 'main';
@@ -1152,7 +1152,7 @@ function pressbutton(btn)
     case "0":
     case "3":
       numberpress(btn)
-      break 
+      break
    }
   }
  }
@@ -1190,8 +1190,8 @@ function numberpress(numpress)
 function clearnumber(tens, ones, color)
 {
  if (!color) color = 'o';
- tens.src='images/blank.gif;
- ones.src='images/blank.gif;
+ tens.src='images/blank.gif';
+ ones.src='images/blank.gif';
 }
 
 function shownumber(num, tens, ones, color)
@@ -1199,11 +1199,11 @@ function shownumber(num, tens, ones, color)
  if (num > 99) num = 99
  ten = parseInt(num / 10,10)
  one = num - (ten * 10)
- digit = "images/blank.gif
+ digit = "images/blank.gif"
  if (ten > 0) digit = "images/" + ten + color + ".bmp"
  tens.src = digit
  ones.src = "images/" + one + color + ".bmp"
-} 
+}
 
 function showfullnumber(num, tens, ones, color)
 {
@@ -1212,7 +1212,7 @@ function showfullnumber(num, tens, ones, color)
  one = num - (ten * 10)
  tens.src = "images/" + ten + color + ".bmp"
  ones.src = "images/" + one + color + ".bmp"
-} 
+}
 
 function resetboard()
 {
@@ -1232,13 +1232,13 @@ function clearboard()
 {
   boardnodes = document.getElementById('boarddiv').childNodes
   for(i = 0 ; i < boardnodes.length ; i++)
-  { 
+  {
    if (boardnodes[i].id != 'board')
    {
     for(j = 0 ; j < boardnodes[i].childNodes.length ; j++)
     {
  	node = boardnodes[i].childNodes[j]
-	if (node.id && node.src) node.src='images/blank.gif
+	if (node.id && node.src) node.src='images/blank.gif'
     }
    }
   }
@@ -1254,7 +1254,7 @@ function display()
 // awaypenalty.sort(comppenalty)
 // topsort(awaypenalty);
  for(i=0;i<numpenalty;i++)
- { 
+ {
   if (homepenalty[i][0])
   {
    shownumber(homepenalty[i][1],img['h' + i + 'mten'],img['h' + i + 'mone'],'o')
@@ -1264,7 +1264,7 @@ function display()
    clearnumber(img['h' + i + 'mten'],img['h' + i + 'mone'])
    clearnumber(img['h' + i + 'sten'],img['h' + i + 'sone'])
    if (penaltyplayer) clearnumber(img['hp' + i + 'ten'],img['hp' + i + 'one'])
-  } 
+  }
   if (awaypenalty[i][0])
   {
    shownumber(awaypenalty[i][1],img['a' + i + 'mten'],img['a' + i + 'mone'],'o')
@@ -1272,7 +1272,7 @@ function display()
    if (penaltyplayer) showfullnumber(awaypenalty[i][3],img['ap' + i + 'ten'],img['ap' + i + 'one'],'o')
   } else {
    clearnumber(img['a' + i + 'mten'],img['a' + i + 'mone'])
-   clearnumber(img['a' + i + 'sten'],img['a' + i + 'sone']) 
+   clearnumber(img['a' + i + 'sten'],img['a' + i + 'sone'])
    if (penaltyplayer) clearnumber(img['ap' + i + 'ten'],img['ap' + i + 'one'])
   }
  }
@@ -1281,7 +1281,7 @@ function display()
   shownumber(mainsec, img['clkmten'], img['clkmone'], 'g')
   showfullnumber(maintenth, img['clksone'], img['clksten'], 'g')
  } else {
-  if (mainmin > 0) 
+  if (mainmin > 0)
   {
    shownumber(mainmin, img['clkmten'], img['clkmone'], 'g')
   } else {
@@ -1289,14 +1289,14 @@ function display()
   }
   showfullnumber(mainsec, img['clksten'], img['clksone'],'g')
  }
- img['period'].src = 'images/' + period + 'y.bmp 
+ img['period'].src = 'images/' + period + 'y.bmp'
 }
 
 function test(i)
 {
  if (i >= 0) {
-  img1 = 'images/' + i + '/o.bmp
-  img2 = 'images/' + i + 'y.bmp
+  img1 = 'images/' + i + 'o.bmp'
+  img2 = 'images/' + i + 'y.bmp'
   fn = "test(" + (i - 1) + ");"
   setTimeout(fn, 1000);
  } else {
@@ -1337,9 +1337,9 @@ function test(i)
 function lamptest()
 {
 
-  img1 = 'images/8o.bmp
-  img2 = 'images/8y.bmp
-  img3 = 'images/8g.bmp
+  img1 = 'images/8o.bmp'
+  img2 = 'images/8y.bmp'
+  img3 = 'images/8g.bmp'
   document.images['hmten'].src=img1
   document.images['hmone'].src=img1
   document.images['awten'].src=img1
